@@ -1,0 +1,35 @@
+<h1> 
+<strong> 
+
+<%= @policy.title %>
+
+</strong>
+</h1>
+<a>
+	<%= @policy.policymakers%>
+	<%= @policy.location%>
+</a>
+
+<p>
+	<%= @policy.description %>
+</p>
+
+<%= form_with scope: :policies, url: policies_path,local: true do |f| %>
+  <%= f.radio_button :voteMethod, 'abstain' %>
+  <%= label :voteMethod_Abstain, 'ABSTAIN' %>
+  <%= f.radio_button :voteMethod, 'yes'%> 
+  <%= label :voteMethod_Yes, 'YES' %>
+  <%= f.radio_button :voteMethod, 'no' %>
+  <%= label :voteMethod_No, 'NO' %>
+
+  <p>
+  	<%= f.submit "Submit Vote"%>
+
+  </p>
+<%end%>
+
+
+<p>
+
+
+</p>

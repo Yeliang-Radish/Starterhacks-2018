@@ -1,0 +1,72 @@
+<h1>Policies Here</h1>
+
+<% @policies.select("DISTINCT(location)").each do |p| %>
+	<a>
+		<%= p.location %>
+	</a>
+	<br>
+<% end %>
+
+
+<%= form_with scope: :policy, url: policies_path,local: true do |form| %>
+  <p>
+    <%= form.label :title %><br>
+    <%= form.text_field :title %>
+  </p>
+ 
+  <p>
+    <%= form.label :description %><br>
+    <%= form.text_area :description %>
+  </p>
+
+   <p>
+    <%= form.label :policymakers %><br>
+    <%= form.text_field :policymakers %>
+  </p>
+
+  <p>
+    <%= form.label :location %><br>
+    <%= form.text_field :location %>
+  </p>
+
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
+
+
+<table>
+
+	<% @policies.each do |policy| %>
+		<tr class="title">
+			<td>
+				<%= policy.title%>
+			</td>
+		</tr>
+		
+		<tr class="desc">
+			<td>
+				<%= policy.description%>
+			</td>
+
+		</tr>
+
+		<tr class="who">
+			<td>
+				<%= policy.policymakers%>
+				
+			</td>
+		</tr>
+		<tr class="links">
+			<td>
+				<%= link_to 'Show', policy_path(policy)%>
+				<hr>
+			</td>
+
+		</tr>
+
+	<% end %>
+
+
+</table>
+

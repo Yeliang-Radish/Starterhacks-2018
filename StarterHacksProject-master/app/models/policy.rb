@@ -1,0 +1,4 @@
+class Policy < ApplicationRecord
+
+
+end

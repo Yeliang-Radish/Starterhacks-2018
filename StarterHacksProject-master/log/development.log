@@ -1,0 +1,925 @@
+Started GET "/" for 127.0.0.1 at 2018-03-03 22:40:01 -0500
+  
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+        bin/rails db:migrate RAILS_ENV=development
+
+):
+  
+activerecord (5.1.5) lib/active_record/migration.rb:576:in `check_pending!'
+activerecord (5.1.5) lib/active_record/migration.rb:553:in `call'
+actionpack (5.1.5) lib/action_dispatch/middleware/callbacks.rb:26:in `block in call'
+activesupport (5.1.5) lib/active_support/callbacks.rb:97:in `run_callbacks'
+actionpack (5.1.5) lib/action_dispatch/middleware/callbacks.rb:24:in `call'
+actionpack (5.1.5) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.5) lib/action_dispatch/middleware/debug_exceptions.rb:59:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.5) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.5) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.5) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.5) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.5) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.5) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.5) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.5) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.5) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.4) lib/rack/method_override.rb:22:in `call'
+rack (2.0.4) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.5) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.5) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.5) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.4) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.5) lib/rails/engine.rb:522:in `call'
+puma (3.11.2) lib/puma/configuration.rb:225:in `call'
+puma (3.11.2) lib/puma/server.rb:624:in `handle_request'
+puma (3.11.2) lib/puma/server.rb:438:in `process_client'
+puma (3.11.2) lib/puma/server.rb:302:in `block in run'
+puma (3.11.2) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+  [1m[35m (13.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (96.8ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (72.2ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUsers (20180304003030)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (2.0ms)[0m  [1m[35mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "gender" varchar, "location" varchar, "email" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35mSQL (0.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180304003030"]]
+  [1m[35m (100.9ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateVotes (20180304003035)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE TABLE "votes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "policy" varchar(50), "usersYes" varchar, "usersNo" varchar, "usersAbstain" varchar, "users" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35mSQL (0.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180304003035"]]
+  [1m[35m (124.2ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreatePolicies (20180304003047)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (15.1ms)[0m  [1m[35mCREATE TABLE "policies" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(50), "description" varchar, "policymakers" varchar, "location" varchar, "number" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180304003047"]]
+  [1m[35m (113.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2018-03-04 03:42:46.194286"], ["updated_at", "2018-03-04 03:42:46.194286"]]
+  [1m[35m (96.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for 127.0.0.1 at 2018-03-03 22:43:29 -0500
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by WelcomeController#homepage as HTML
+  Rendering welcome/homepage.html.erb within layouts/application
+  Rendered welcome/homepage.html.erb within layouts/application (10.0ms)
+Completed 200 OK in 3651ms (Views: 3625.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-03-03 22:43:50 -0500
+Processing by WelcomeController#homepage as HTML
+  Rendering welcome/homepage.html.erb within layouts/application
+  Rendered welcome/homepage.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 118ms (Views: 97.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-03-03 22:45:04 -0500
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by WelcomeController#homepage as HTML
+  Rendering welcome/homepage.html.erb within layouts/application
+  Rendered welcome/homepage.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 329ms (Views: 306.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/policies" for 127.0.0.1 at 2018-03-03 22:45:09 -0500
+Processing by PoliciesController#index as HTML
+Completed 500 Internal Server Error in 25ms (ActiveRecord: 1.0ms)
+
+
+  
+NoMethodError (undefined method `filterrific' for #<Class:0x000000000f70e3b0>):
+  
+app/models/policy.rb:3:in `<class:Policy>'
+app/models/policy.rb:1:in `<top (required)>'
+app/controllers/policies_controller.rb:7:in `index'
+Started GET "/policies" for 127.0.0.1 at 2018-03-03 22:52:48 -0500
+Processing by PoliciesController#index as HTML
+Started GET "/policies" for 127.0.0.1 at 2018-03-03 22:52:58 -0500
+  Rendering policies/index.html.erb within layouts/application
+  [1m[36mPolicy Load (0.0ms)[0m  [1m[34mSELECT DISTINCT(location) FROM "policies"[0m
+  [1m[36mPolicy Load (1.0ms)[0m  [1m[34mSELECT "policies".* FROM "policies"[0m
+  Rendered policies/index.html.erb within layouts/application (196.1ms)
+Completed 200 OK in 371ms (Views: 348.2ms | ActiveRecord: 2.0ms)
+
+
+Processing by PoliciesController#index as HTML
+  Rendering policies/index.html.erb within layouts/application
+  [1m[36mPolicy Load (0.0ms)[0m  [1m[34mSELECT DISTINCT(location) FROM "policies"[0m
+  [1m[36mPolicy Load (0.0ms)[0m  [1m[34mSELECT "policies".* FROM "policies"[0m
+  Rendered policies/index.html.erb within layouts/application (8.0ms)
+Completed 200 OK in 123ms (Views: 102.9ms | ActiveRecord: 1.0ms)
+
+
+Started POST "/policies" for 127.0.0.1 at 2018-03-03 22:53:05 -0500
+Processing by PoliciesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"6VFVlWqYU+4zh5QTUEcSbKyj8PmIxVTjmObxFcbSiY23AXp1Xom7JFaz/q4nwnxfRYc5IfQcJ2/8GrOoLt/VhA==", "policy"=>{"title"=>"asdf", "description"=>"adsf", "policymakers"=>"adsf", "location"=>"asdf"}, "commit"=>"Save Policy"}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  [1m[32mINSERT INTO "policies" ("title", "description", "policymakers", "location", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "asdf"], ["description", "adsf"], ["policymakers", "adsf"], ["location", "asdf"], ["created_at", "2018-03-04 03:53:05.550353"], ["updated_at", "2018-03-04 03:53:05.550353"]]
+  [1m[35m (188.8ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/policies
+Completed 302 Found in 207ms (ActiveRecord: 191.8ms)
+
+
+Started GET "/policies" for 127.0.0.1 at 2018-03-03 22:53:05 -0500
+Processing by PoliciesController#index as HTML
+  Rendering policies/index.html.erb within layouts/application
+  [1m[36mPolicy Load (0.0ms)[0m  [1m[34mSELECT DISTINCT(location) FROM "policies"[0m
+  [1m[36mPolicy Load (0.0ms)[0m  [1m[34mSELECT "policies".* FROM "policies"[0m
+  Rendered policies/index.html.erb within layouts/application (30.0ms)
+Completed 200 OK in 149ms (Views: 128.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/policies/1" for 127.0.0.1 at 2018-03-03 22:53:08 -0500
+Processing by PoliciesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPolicy Load (0.0ms)[0m  [1m[34mSELECT  "policies".* FROM "policies" WHERE "policies"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering policies/show.html.erb within layouts/application
+  Rendered policies/show.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 207ms (Views: 89.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/policies" for 127.0.0.1 at 2018-03-03 22:53:16 -0500
+Processing by PoliciesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"W1CQVc4iO/OWeFyHN26rBkrB/9FgsIi9T4fDDZuqGOIFAL+1+jPTOfNMNjpA68U1o+U2CRxp+zEre4Gwc6dE6w==", "policy"=>{"title"=>"cvbn", "description"=>"cvbn", "policymakers"=>"cvbn", "location"=>"cvbn"}, "commit"=>"Save Policy"}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (22.1ms)[0m  [1m[32mINSERT INTO "policies" ("title", "description", "policymakers", "location", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "cvbn"], ["description", "cvbn"], ["policymakers", "cvbn"], ["location", "cvbn"], ["created_at", "2018-03-04 03:53:16.524724"], ["updated_at", "2018-03-04 03:53:16.524724"]]
+  [1m[35m (119.0ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/policies
+Completed 302 Found in 154ms (ActiveRecord: 141.1ms)
+
+
+Started GET "/policies" for 127.0.0.1 at 2018-03-03 22:53:16 -0500
+Processing by PoliciesController#index as HTML
+  Rendering policies/index.html.erb within layouts/application
+  [1m[36mPolicy Load (0.0ms)[0m  [1m[34mSELECT DISTINCT(location) FROM "policies"[0m
+  [1m[36mPolicy Load (0.0ms)[0m  [1m[34mSELECT "policies".* FROM "policies"[0m
+  Rendered policies/index.html.erb within layouts/application (9.0ms)
+Completed 200 OK in 156ms (Views: 133.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/policies" for 127.0.0.1 at 2018-03-03 22:53:24 -0500
+Processing by PoliciesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Y0FBTsOab/DGC81BMtS2Hf8rdtaL6E56oCjPTboK8X49EW6u94uHOqM/p/xFUdguFg+/DvcxPfbE1I3wUgetdw==", "policy"=>{"title"=>"tyiu", "description"=>"qweqwe", "policymakers"=>"tyiu", "location"=>"tyiu"}, "commit"=>"Save Policy"}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (31.3ms)[0m  [1m[32mINSERT INTO "policies" ("title", "description", "policymakers", "location", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "tyiu"], ["description", "qweqwe"], ["policymakers", "tyiu"], ["location", "tyiu"], ["created_at", "2018-03-04 03:53:24.838932"], ["updated_at", "2018-03-04 03:53:24.838932"]]
+  [1m[35m (169.6ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/policies
+Completed 302 Found in 225ms (ActiveRecord: 200.9ms)
+
+
+Started GET "/policies" for 127.0.0.1 at 2018-03-03 22:53:25 -0500
+Processing by PoliciesController#index as HTML
+  Rendering policies/index.html.erb within layouts/application
+  [1m[36mPolicy Load (0.0ms)[0m  [1m[34mSELECT DISTINCT(location) FROM "policies"[0m
+  [1m[36mPolicy Load (0.0ms)[0m  [1m[34mSELECT "policies".* FROM "policies"[0m
+  Rendered policies/index.html.erb within layouts/application (11.0ms)
+Completed 200 OK in 128ms (Views: 110.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/policies" for 127.0.0.1 at 2018-03-03 22:53:35 -0500
+Processing by PoliciesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"U9GyIqePHk6uqzGlWVC7y4mUZrvRSiCMR3Z2qojSFZgNgZ3Ck572hMufWxgu1dX4YLCvY62TUwAjijQXYN9JkQ==", "policy"=>{"title"=>"qaz", "description"=>"wsx", "policymakers"=>"edc", "location"=>"rfv"}, "commit"=>"Save Policy"}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (7.0ms)[0m  [1m[32mINSERT INTO "policies" ("title", "description", "policymakers", "location", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "qaz"], ["description", "wsx"], ["policymakers", "edc"], ["location", "rfv"], ["created_at", "2018-03-04 03:53:35.669121"], ["updated_at", "2018-03-04 03:53:35.669121"]]
+  [1m[35m (108.3ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/policies
+Completed 302 Found in 122ms (ActiveRecord: 115.3ms)
+
+
+Started GET "/policies" for 127.0.0.1 at 2018-03-03 22:53:35 -0500
+Processing by PoliciesController#index as HTML
+  Rendering policies/index.html.erb within layouts/application
+  [1m[36mPolicy Load (0.0ms)[0m  [1m[34mSELECT DISTINCT(location) FROM "policies"[0m
+  [1m[36mPolicy Load (0.0ms)[0m  [1m[34mSELECT "policies".* FROM "policies"[0m
+  Rendered policies/index.html.erb within layouts/application (8.0ms)
+Completed 200 OK in 123ms (Views: 106.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/policies" for 127.0.0.1 at 2018-03-03 23:07:09 -0500
+Processing by PoliciesController#index as HTML
+  Rendering policies/index.html.erb within layouts/application
+  [1m[36mPolicy Load (0.0ms)[0m  [1m[34mSELECT DISTINCT(location) FROM "policies"[0m
+  [1m[36mPolicy Load (0.0ms)[0m  [1m[34mSELECT "policies".* FROM "policies"[0m
+  Rendered policies/index.html.erb within layouts/application (11.0ms)
+Completed 200 OK in 124ms (Views: 106.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/policies" for 127.0.0.1 at 2018-03-03 23:07:26 -0500
+Processing by PoliciesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"J3gtZ8nQ4D01SSsfrf8YtQGKf69Ot1y1ldTXkqsdt655KAKH/cEI91B9QaLaenaG6K62dzJuLznxKJUvQxDrpw==", "policy"=>{"title"=>"asdf", "description"=>"asdf", "policymakers"=>"asdf", "location"=>"zxcv"}, "commit"=>"Save Policy"}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (9.5ms)[0m  [1m[32mINSERT INTO "policies" ("title", "description", "policymakers", "location", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "asdf"], ["description", "asdf"], ["policymakers", "asdf"], ["location", "zxcv"], ["created_at", "2018-03-04 04:07:26.175807"], ["updated_at", "2018-03-04 04:07:26.175807"]]
+  [1m[35m (130.1ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/policies
+Completed 302 Found in 153ms (ActiveRecord: 139.6ms)
+
+
+Started GET "/policies" for 127.0.0.1 at 2018-03-03 23:07:26 -0500
+Processing by PoliciesController#index as HTML
+  Rendering policies/index.html.erb within layouts/application
+  [1m[36mPolicy Load (0.0ms)[0m  [1m[34mSELECT DISTINCT(location) FROM "policies"[0m
+  [1m[36mPolicy Load (0.0ms)[0m  [1m[34mSELECT "policies".* FROM "policies"[0m
+  Rendered policies/index.html.erb within layouts/application (12.2ms)
+Completed 200 OK in 133ms (Views: 115.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/policies" for 127.0.0.1 at 2018-03-03 23:09:28 -0500
+Processing by PoliciesController#index as HTML
+  Rendering policies/index.html.erb within layouts/application
+  [1m[36mPolicy Load (1.0ms)[0m  [1m[34mSELECT DISTINCT(location) FROM "policies"[0m
+  [1m[36mPolicy Load (0.0ms)[0m  [1m[34mSELECT  "policies".* FROM "policies" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Policy Load (0.0ms)[0m  [1m[34mSELECT  "policies".* FROM "policies" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Policy Load (0.0ms)[0m  [1m[34mSELECT  "policies".* FROM "policies" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Policy Load (0.0ms)[0m  [1m[34mSELECT  "policies".* FROM "policies" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Policy Load (0.0ms)[0m  [1m[34mSELECT  "policies".* FROM "policies" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Policy Load (0.0ms)[0m  [1m[34mSELECT  "policies".* FROM "policies" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Policy Load (0.0ms)[0m  [1m[34mSELECT  "policies".* FROM "policies" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Policy Load (0.0ms)[0m  [1m[34mSELECT  "policies".* FROM "policies" LIMIT ?[0m  [["LIMIT", 11]]
+  Rendered policies/index.html.erb within layouts/application (266.7ms)
+Completed 500 Internal Server Error in 336ms (ActiveRecord: 1.0ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `policy' for #<#<Class:0x000000000ef40d18>:0x000000000d4fc920>
+Did you mean?  policy_url):
+     6: 	</a>
+     7: 	<tr class="title">
+     8: 			<td>
+     9: 				<%= policy.title%>
+    10: 			</td>
+    11: 		</tr>
+    12: 		
+  
+app/views/policies/index.html.erb:9:in `block in _app_views_policies_index_html_erb___566915525_111669440'
+app/views/policies/index.html.erb:3:in `_app_views_policies_index_html_erb___566915525_111669440'
+Started GET "/policies" for 127.0.0.1 at 2018-03-03 23:09:55 -0500
+Processing by PoliciesController#index as HTML
+  Rendering policies/index.html.erb within layouts/application
+  [1m[36mPolicy Load (0.0ms)[0m  [1m[34mSELECT DISTINCT(location) FROM "policies"[0m
+  Rendered policies/index.html.erb within layouts/application (22.0ms)
+Completed 500 Internal Server Error in 92ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (missing attribute: title):
+     6: 	</a>
+     7: 	<tr class="title">
+     8: 			<td>
+     9: 				<%= policy.title%>
+    10: 			</td>
+    11: 		</tr>
+    12: 		
+  
+app/views/policies/index.html.erb:9:in `block in _app_views_policies_index_html_erb___566915525_128879900'
+app/views/policies/index.html.erb:3:in `_app_views_policies_index_html_erb___566915525_128879900'
+Started GET "/policies" for 127.0.0.1 at 2018-03-03 23:11:01 -0500
+Processing by PoliciesController#index as HTML
+  Rendering policies/index.html.erb within layouts/application
+  [1m[36mPolicy Load (0.0ms)[0m  [1m[34mSELECT DISTINCT(location) FROM "policies"[0m
+  Rendered policies/index.html.erb within layouts/application (51.1ms)
+Completed 500 Internal Server Error in 117ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (missing attribute: title):
+     5: 		<%= policy.location %>
+     6: 		<tr class="title">
+     7: 			<td>
+     8: 				<%= policy.title%>
+     9: 			</td>
+    10: 		</tr>
+    11: 		
+  
+app/views/policies/index.html.erb:8:in `block in _app_views_policies_index_html_erb___566915525_110166260'
+app/views/policies/index.html.erb:3:in `_app_views_policies_index_html_erb___566915525_110166260'
+Started GET "/policies" for 127.0.0.1 at 2018-03-03 23:11:48 -0500
+Processing by PoliciesController#index as HTML
+  Rendering policies/index.html.erb within layouts/application
+  [1m[36mPolicy Load (1.0ms)[0m  [1m[34mSELECT DISTINCT(location) FROM "policies"[0m
+  Rendered policies/index.html.erb within layouts/application (20.5ms)
+Completed 500 Internal Server Error in 85ms (ActiveRecord: 1.0ms)
+
+
+  
+ActionView::Template::Error (missing attribute: title):
+     5: 		<!--<%= policy.location %>-->
+     6: 		<tr class="title">
+     7: 			<td>
+     8: 				<%= policy.title%>
+     9: 			</td>
+    10: 		</tr>
+    11: 		
+  
+app/views/policies/index.html.erb:8:in `block in _app_views_policies_index_html_erb___566915525_125769640'
+app/views/policies/index.html.erb:3:in `_app_views_policies_index_html_erb___566915525_125769640'
+Started GET "/policies" for 127.0.0.1 at 2018-03-03 23:14:23 -0500
+Processing by PoliciesController#index as HTML
+  Rendering policies/index.html.erb within layouts/application
+  [1m[36mPolicy Load (1.0ms)[0m  [1m[34mSELECT DISTINCT(location) FROM "policies"[0m
+  [1m[36mPolicy Load (0.0ms)[0m  [1m[34mSELECT "policies".* FROM "policies"[0m
+  Rendered policies/index.html.erb within layouts/application (10.4ms)
+Completed 200 OK in 168ms (Views: 150.7ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/policies/1" for 127.0.0.1 at 2018-03-03 23:14:30 -0500
+Processing by PoliciesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPolicy Load (0.0ms)[0m  [1m[34mSELECT  "policies".* FROM "policies" WHERE "policies"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering policies/show.html.erb within layouts/application
+  Rendered policies/show.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 136ms (Views: 99.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/policies" for 127.0.0.1 at 2018-03-03 23:14:57 -0500
+Processing by PoliciesController#index as HTML
+  Rendering policies/index.html.erb within layouts/application
+  [1m[36mPolicy Load (0.0ms)[0m  [1m[34mSELECT DISTINCT(location) FROM "policies"[0m
+  [1m[36mPolicy Load (0.0ms)[0m  [1m[34mSELECT  "policies".* FROM "policies" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Policy Load (0.0ms)[0m  [1m[34mSELECT  "policies".* FROM "policies" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Policy Load (0.0ms)[0m  [1m[34mSELECT  "policies".* FROM "policies" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Policy Load (0.0ms)[0m  [1m[34mSELECT  "policies".* FROM "policies" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Policy Load (0.0ms)[0m  [1m[34mSELECT  "policies".* FROM "policies" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Policy Load (0.0ms)[0m  [1m[34mSELECT  "policies".* FROM "policies" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Policy Load (0.0ms)[0m  [1m[34mSELECT  "policies".* FROM "policies" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Policy Load (0.0ms)[0m  [1m[34mSELECT  "policies".* FROM "policies" LIMIT ?[0m  [["LIMIT", 11]]
+  Rendered policies/index.html.erb within layouts/application (260.7ms)
+Completed 500 Internal Server Error in 333ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `policy' for #<#<Class:0x000000000ef40d18>:0x000000000f64a5c8>
+Did you mean?  policy_url):
+     7: 	<br>
+     8: 	<tr class="title">
+     9: 			<td>
+    10: 				<%= policy.title%>
+    11: 			</td>
+    12: 		</tr>
+    13: 		
+  
+app/views/policies/index.html.erb:10:in `block in _app_views_policies_index_html_erb___566915525_129128400'
+app/views/policies/index.html.erb:3:in `_app_views_policies_index_html_erb___566915525_129128400'
+Started GET "/policies" for 127.0.0.1 at 2018-03-03 23:15:17 -0500
+Processing by PoliciesController#index as HTML
+  Rendering policies/index.html.erb within layouts/application
+  [1m[36mPolicy Load (0.0ms)[0m  [1m[34mSELECT DISTINCT(location) FROM "policies"[0m
+  [1m[36mPolicy Load (0.0ms)[0m  [1m[34mSELECT  "policies".* FROM "policies" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Policy Load (0.0ms)[0m  [1m[34mSELECT  "policies".* FROM "policies" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Policy Load (0.0ms)[0m  [1m[34mSELECT  "policies".* FROM "policies" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Policy Load (0.0ms)[0m  [1m[34mSELECT  "policies".* FROM "policies" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Policy Load (0.0ms)[0m  [1m[34mSELECT  "policies".* FROM "policies" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Policy Load (0.0ms)[0m  [1m[34mSELECT  "policies".* FROM "policies" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Policy Load (0.0ms)[0m  [1m[34mSELECT  "policies".* FROM "policies" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Policy Load (0.0ms)[0m  [1m[34mSELECT  "policies".* FROM "policies" LIMIT ?[0m  [["LIMIT", 11]]
+  Rendered policies/index.html.erb within layouts/application (244.6ms)
+Completed 500 Internal Server Error in 312ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `policy' for #<#<Class:0x000000000ef40d18>:0x000000000ede5950>
+Did you mean?  policy_url):
+     7: 	<br>
+     8: 	<tr class="title">
+     9: 			<td>
+    10: 				<!--<%= policy.title%>-->
+    11: 			</td>
+    12: 		</tr>
+    13: 		
+  
+app/views/policies/index.html.erb:10:in `block in _app_views_policies_index_html_erb___566915525_124727720'
+app/views/policies/index.html.erb:3:in `_app_views_policies_index_html_erb___566915525_124727720'
+Started GET "/policies" for 127.0.0.1 at 2018-03-03 23:16:46 -0500
+Processing by PoliciesController#index as HTML
+  Rendering policies/index.html.erb within layouts/application
+  [1m[36mPolicy Load (1.0ms)[0m  [1m[34mSELECT DISTINCT(location) FROM "policies"[0m
+  [1m[36mPolicy Load (0.0ms)[0m  [1m[34mSELECT  "policies".* FROM "policies" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Policy Load (0.0ms)[0m  [1m[34mSELECT  "policies".* FROM "policies" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Policy Load (0.0ms)[0m  [1m[34mSELECT  "policies".* FROM "policies" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Policy Load (0.0ms)[0m  [1m[34mSELECT  "policies".* FROM "policies" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Policy Load (0.0ms)[0m  [1m[34mSELECT  "policies".* FROM "policies" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Policy Load (0.0ms)[0m  [1m[34mSELECT  "policies".* FROM "policies" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Policy Load (0.0ms)[0m  [1m[34mSELECT  "policies".* FROM "policies" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Policy Load (0.0ms)[0m  [1m[34mSELECT  "policies".* FROM "policies" LIMIT ?[0m  [["LIMIT", 11]]
+  Rendered policies/index.html.erb within layouts/application (246.7ms)
+Completed 500 Internal Server Error in 315ms (ActiveRecord: 1.0ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `policy' for #<#<Class:0x000000000ef40d18>:0x0000000006821468>
+Did you mean?  policy_url):
+     8: 	<table>
+     9: 		<tr class="title">
+    10: 			<td>
+    11: 				<%= policy.title%>
+    12: 			</td>
+    13: 		</tr>
+    14: 		
+  
+app/views/policies/index.html.erb:11:in `block in _app_views_policies_index_html_erb___566915525_45660020'
+app/views/policies/index.html.erb:3:in `_app_views_policies_index_html_erb___566915525_45660020'
+Started GET "/policies" for 127.0.0.1 at 2018-03-03 23:17:26 -0500
+Processing by PoliciesController#index as HTML
+  Rendering policies/index.html.erb within layouts/application
+  [1m[36mPolicy Load (0.0ms)[0m  [1m[34mSELECT DISTINCT(location) FROM "policies"[0m
+  [1m[36mPolicy Load (0.0ms)[0m  [1m[34mSELECT  "policies".* FROM "policies" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Policy Load (0.0ms)[0m  [1m[34mSELECT  "policies".* FROM "policies" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Policy Load (0.0ms)[0m  [1m[34mSELECT  "policies".* FROM "policies" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Policy Load (0.0ms)[0m  [1m[34mSELECT  "policies".* FROM "policies" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Policy Load (0.0ms)[0m  [1m[34mSELECT  "policies".* FROM "policies" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Policy Load (0.0ms)[0m  [1m[34mSELECT  "policies".* FROM "policies" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Policy Load (0.0ms)[0m  [1m[34mSELECT  "policies".* FROM "policies" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Policy Load (0.0ms)[0m  [1m[34mSELECT  "policies".* FROM "policies" LIMIT ?[0m  [["LIMIT", 11]]
+  Rendered policies/index.html.erb within layouts/application (245.6ms)
+Completed 500 Internal Server Error in 341ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `policy' for #<#<Class:0x000000000ef40d18>:0x000000000d6a3f80>
+Did you mean?  policy_url):
+    36: 	<table>
+    37: 		<tr class="title">
+    38: 			<td>
+    39: 				<%= policy.title%>
+    40: 			</td>
+    41: 		</tr>
+    42: 		
+  
+app/views/policies/index.html.erb:39:in `block in _app_views_policies_index_html_erb___566915525_112544840'
+app/views/policies/index.html.erb:31:in `_app_views_policies_index_html_erb___566915525_112544840'
+Started GET "/policies" for 127.0.0.1 at 2018-03-03 23:18:19 -0500
+Processing by PoliciesController#index as HTML
+  Rendering policies/index.html.erb within layouts/application
+  [1m[36mPolicy Load (0.0ms)[0m  [1m[34mSELECT DISTINCT(location) FROM "policies"[0m
+  [1m[36mCACHE Policy Load (0.0ms)[0m  [1m[34mSELECT DISTINCT(location) FROM "policies"[0m
+  Rendered policies/index.html.erb within layouts/application (25.1ms)
+Completed 500 Internal Server Error in 90ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (missing attribute: title):
+    40: 	<% @policies.select("DISTINCT(location)").each do |policy| %>
+    41: 		<tr class="title">
+    42: 			<td>
+    43: 				<%= policy.title%>
+    44: 			</td>
+    45: 		</tr>
+    46: 		
+  
+app/views/policies/index.html.erb:43:in `block in _app_views_policies_index_html_erb___566915525_125870000'
+app/views/policies/index.html.erb:40:in `_app_views_policies_index_html_erb___566915525_125870000'
+Started GET "/policies" for 127.0.0.1 at 2018-03-03 23:18:34 -0500
+Processing by PoliciesController#index as HTML
+  Rendering policies/index.html.erb within layouts/application
+  [1m[36mPolicy Load (0.0ms)[0m  [1m[34mSELECT DISTINCT(location) FROM "policies"[0m
+  [1m[36mPolicy Load (0.0ms)[0m  [1m[34mSELECT "policies".* FROM "policies"[0m
+  Rendered policies/index.html.erb within layouts/application (12.0ms)
+Completed 200 OK in 132ms (Views: 112.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/policies" for 127.0.0.1 at 2018-03-03 23:18:53 -0500
+Processing by PoliciesController#index as HTML
+  Rendering policies/index.html.erb within layouts/application
+  [1m[36mPolicy Load (1.0ms)[0m  [1m[34mSELECT DISTINCT(location) FROM "policies"[0m
+  [1m[36mPolicy Load (1.0ms)[0m  [1m[34mSELECT "policies"."location" FROM "policies"[0m
+  Rendered policies/index.html.erb within layouts/application (24.1ms)
+Completed 500 Internal Server Error in 101ms (ActiveRecord: 2.0ms)
+
+
+  
+ActionView::Template::Error (missing attribute: title):
+    40: 	<% @policies.select("location").each do |policy| %>
+    41: 		<tr class="title">
+    42: 			<td>
+    43: 				<%= policy.title%>
+    44: 			</td>
+    45: 		</tr>
+    46: 		
+  
+app/views/policies/index.html.erb:43:in `block in _app_views_policies_index_html_erb___566915525_121366820'
+app/views/policies/index.html.erb:40:in `_app_views_policies_index_html_erb___566915525_121366820'
+Started GET "/policies" for 127.0.0.1 at 2018-03-03 23:19:23 -0500
+Processing by PoliciesController#index as HTML
+  Rendering policies/index.html.erb within layouts/application
+  [1m[36mPolicy Load (1.0ms)[0m  [1m[34mSELECT DISTINCT(location) FROM "policies"[0m
+  [1m[36mPolicy Load (0.0ms)[0m  [1m[34mSELECT "policies".* FROM "policies"[0m
+  Rendered policies/index.html.erb within layouts/application (11.5ms)
+Completed 200 OK in 147ms (Views: 128.5ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/policies" for 127.0.0.1 at 2018-03-03 23:22:06 -0500
+Processing by PoliciesController#index as HTML
+  Rendering policies/index.html.erb within layouts/application
+  [1m[36mPolicy Load (0.0ms)[0m  [1m[34mSELECT DISTINCT(location) FROM "policies"[0m
+  Rendered policies/index.html.erb within layouts/application (23.1ms)
+Completed 500 Internal Server Error in 89ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (missing attribute: title):
+    34: 	<% @policies.select("DISTINCT(location)").each do |policy| %>
+    35: 		<tr class="title">
+    36: 			<td>
+    37: 				<%= policy.title%>
+    38: 			</td>
+    39: 		</tr>
+    40: 		
+  
+app/views/policies/index.html.erb:37:in `block in _app_views_policies_index_html_erb___566915525_121217280'
+app/views/policies/index.html.erb:34:in `_app_views_policies_index_html_erb___566915525_121217280'
+Started GET "/policies" for 127.0.0.1 at 2018-03-03 23:23:15 -0500
+Processing by PoliciesController#index as HTML
+  Rendering policies/index.html.erb within layouts/application
+  [1m[36mPolicy Load (1.0ms)[0m  [1m[34mSELECT DISTINCT(location) FROM "policies"[0m
+  [1m[36mCACHE Policy Load (0.0ms)[0m  [1m[34mSELECT DISTINCT(location) FROM "policies"[0m
+  Rendered policies/index.html.erb within layouts/application (26.1ms)
+Completed 500 Internal Server Error in 93ms (ActiveRecord: 1.0ms)
+
+
+  
+ActionView::Template::Error (missing attribute: description):
+    43: 		
+    44: 		<tr class="desc">
+    45: 			<td>
+    46: 				<%= policy.description%>
+    47: 			</td>
+    48: 
+    49: 		</tr>
+  
+app/views/policies/index.html.erb:46:in `block in _app_views_policies_index_html_erb___566915525_123678360'
+app/views/policies/index.html.erb:41:in `_app_views_policies_index_html_erb___566915525_123678360'
+Started GET "/policies" for 127.0.0.1 at 2018-03-03 23:23:40 -0500
+Processing by PoliciesController#index as HTML
+  Rendering policies/index.html.erb within layouts/application
+  [1m[36mPolicy Load (0.0ms)[0m  [1m[34mSELECT DISTINCT(location) FROM "policies"[0m
+  [1m[36mPolicy Load (0.0ms)[0m  [1m[34mSELECT "policies".* FROM "policies"[0m
+  Rendered policies/index.html.erb within layouts/application (7.0ms)
+Completed 200 OK in 118ms (Views: 101.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/policies" for 127.0.0.1 at 2018-03-03 23:34:37 -0500
+Processing by PoliciesController#index as HTML
+  Rendering policies/index.html.erb within layouts/application
+  [1m[36mPolicy Load (0.0ms)[0m  [1m[34mSELECT DISTINCT(location) FROM "policies"[0m
+  [1m[36mPolicy Load (0.0ms)[0m  [1m[34mSELECT  "policies".* FROM "policies" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Policy Load (0.0ms)[0m  [1m[34mSELECT  "policies".* FROM "policies" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Policy Load (0.0ms)[0m  [1m[34mSELECT  "policies".* FROM "policies" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Policy Load (0.0ms)[0m  [1m[34mSELECT  "policies".* FROM "policies" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Policy Load (0.0ms)[0m  [1m[34mSELECT  "policies".* FROM "policies" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Policy Load (0.0ms)[0m  [1m[34mSELECT  "policies".* FROM "policies" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Policy Load (0.0ms)[0m  [1m[34mSELECT  "policies".* FROM "policies" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Policy Load (0.0ms)[0m  [1m[34mSELECT  "policies".* FROM "policies" LIMIT ?[0m  [["LIMIT", 11]]
+  Rendered policies/index.html.erb within layouts/application (233.5ms)
+Completed 500 Internal Server Error in 330ms (ActiveRecord: 1.0ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `f' for #<#<Class:0x000000000d428eb8>:0x000000000d400918>):
+    28:     <%= form.label :location %><br>
+    29:     <%= form.text_field :location %>
+    30:   </p>
+    31:   <%= f.collection_select :provider_id, form.order(:name),:id,:name, include_blank: true %>
+    32: 
+    33:   <p>
+    34:     <%= form.submit %>
+  
+app/views/policies/index.html.erb:31:in `block in _app_views_policies_index_html_erb___566915525_111235500'
+app/views/policies/index.html.erb:11:in `_app_views_policies_index_html_erb___566915525_111235500'
+Started GET "/policies" for 127.0.0.1 at 2018-03-04 10:20:16 -0500
+Started GET "/policies" for 127.0.0.1 at 2018-03-04 10:20:16 -0500
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PoliciesController#index as HTML
+Processing by PoliciesController#index as HTML
+  Rendering policies/index.html.erb within layouts/application
+  Rendering policies/index.html.erb within layouts/application
+  [1m[36mPolicy Load (1.0ms)[0m  [1m[34mSELECT DISTINCT(location) FROM "policies"[0m
+  [1m[36mPolicy Load (0.0ms)[0m  [1m[34mSELECT DISTINCT(location) FROM "policies"[0m
+  [1m[36mPolicy Load (1.0ms)[0m  [1m[34mSELECT  "policies".* FROM "policies" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mPolicy Load (1.0ms)[0m  [1m[34mSELECT  "policies".* FROM "policies" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mPolicy Load (1.0ms)[0m  [1m[34mSELECT  "policies".* FROM "policies" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mPolicy Load (0.0ms)[0m  [1m[34mSELECT  "policies".* FROM "policies" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mPolicy Load (1.0ms)[0m  [1m[34mSELECT  "policies".* FROM "policies" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mPolicy Load (1.0ms)[0m  [1m[34mSELECT  "policies".* FROM "policies" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mPolicy Load (0.0ms)[0m  [1m[34mSELECT  "policies".* FROM "policies" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mPolicy Load (1.6ms)[0m  [1m[34mSELECT  "policies".* FROM "policies" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mPolicy Load (0.0ms)[0m  [1m[34mSELECT  "policies".* FROM "policies" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mPolicy Load (1.0ms)[0m  [1m[34mSELECT  "policies".* FROM "policies" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mPolicy Load (0.0ms)[0m  [1m[34mSELECT  "policies".* FROM "policies" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mPolicy Load (1.0ms)[0m  [1m[34mSELECT  "policies".* FROM "policies" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mPolicy Load (0.0ms)[0m  [1m[34mSELECT  "policies".* FROM "policies" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mPolicy Load (1.0ms)[0m  [1m[34mSELECT  "policies".* FROM "policies" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mPolicy Load (1.0ms)[0m  [1m[34mSELECT  "policies".* FROM "policies" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mPolicy Load (1.0ms)[0m  [1m[34mSELECT  "policies".* FROM "policies" LIMIT ?[0m  [["LIMIT", 11]]
+  Rendered policies/index.html.erb within layouts/application (1575.1ms)
+  Rendered policies/index.html.erb within layouts/application (1634.4ms)
+Completed 500 Internal Server Error in 2462ms (ActiveRecord: 8.0ms)
+
+
+Completed 500 Internal Server Error in 2500ms (ActiveRecord: 8.6ms)
+
+
+  
+  
+ActionView::Template::Error (undefined local variable or method `f' for #<#<Class:0x0000000007639af0>:0x00000000075f4d88>):
+ActionView::Template::Error (undefined local variable or method `f' for #<#<Class:0x0000000007639af0>:0x00000000075f5850>):
+    28:     <%= form.label :location %><br>
+    29:     <%= form.text_field :location %>
+    30:   </p>
+    31:   <%= f.collection_select :provider_id, form.order(:name),:id,:name, include_blank: true %>
+    32: 
+    33:   <p>
+    34:     <%= form.submit %>
+    28:     <%= form.label :location %><br>
+    29:     <%= form.text_field :location %>
+    30:   </p>
+    31:   <%= f.collection_select :provider_id, form.order(:name),:id,:name, include_blank: true %>
+    32: 
+    33:   <p>
+    34:     <%= form.submit %>
+  
+  
+app/views/policies/index.html.erb:31:in `block in _app_views_policies_index_html_erb___1146481552_61987360'
+app/views/policies/index.html.erb:11:in `_app_views_policies_index_html_erb___1146481552_61987360'
+app/views/policies/index.html.erb:31:in `block in _app_views_policies_index_html_erb___1146481552_61987360'
+app/views/policies/index.html.erb:11:in `_app_views_policies_index_html_erb___1146481552_61987360'
+Started GET "/policies" for 127.0.0.1 at 2018-03-04 10:20:28 -0500
+Processing by PoliciesController#index as HTML
+  Rendering policies/index.html.erb within layouts/application
+  [1m[36mPolicy Load (1.0ms)[0m  [1m[34mSELECT DISTINCT(location) FROM "policies"[0m
+  [1m[36mPolicy Load (1.0ms)[0m  [1m[34mSELECT  "policies".* FROM "policies" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Policy Load (0.0ms)[0m  [1m[34mSELECT  "policies".* FROM "policies" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Policy Load (0.0ms)[0m  [1m[34mSELECT  "policies".* FROM "policies" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Policy Load (0.0ms)[0m  [1m[34mSELECT  "policies".* FROM "policies" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Policy Load (0.0ms)[0m  [1m[34mSELECT  "policies".* FROM "policies" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Policy Load (0.0ms)[0m  [1m[34mSELECT  "policies".* FROM "policies" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Policy Load (0.0ms)[0m  [1m[34mSELECT  "policies".* FROM "policies" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Policy Load (0.0ms)[0m  [1m[34mSELECT  "policies".* FROM "policies" LIMIT ?[0m  [["LIMIT", 11]]
+  Rendered policies/index.html.erb within layouts/application (5090.0ms)
+Completed 500 Internal Server Error in 5482ms (ActiveRecord: 3.0ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `f' for #<#<Class:0x0000000007639af0>:0x0000000007649b08>):
+    28:     <%= form.label :location %><br>
+    29:     <%= form.text_field :location %>
+    30:   </p>
+    31:   <%= f.collection_select :provider_id, form.order(:name),:id,:name, include_blank: true %>
+    32: 
+    33:   <p>
+    34:     <%= form.submit %>
+  
+app/views/policies/index.html.erb:31:in `block in _app_views_policies_index_html_erb___1146481552_62035780'
+app/views/policies/index.html.erb:11:in `_app_views_policies_index_html_erb___1146481552_62035780'
+Started GET "/policies" for 127.0.0.1 at 2018-03-04 10:21:25 -0500
+Processing by PoliciesController#index as HTML
+  Rendering policies/index.html.erb within layouts/application
+  [1m[36mPolicy Load (1.0ms)[0m  [1m[34mSELECT DISTINCT(location) FROM "policies"[0m
+  [1m[36mPolicy Load (0.0ms)[0m  [1m[34mSELECT "policies".* FROM "policies"[0m
+  Rendered policies/index.html.erb within layouts/application (96.3ms)
+Completed 200 OK in 2752ms (Views: 2680.6ms | ActiveRecord: 1.0ms)
+
+
+Started POST "/policies" for 127.0.0.1 at 2018-03-04 10:21:41 -0500
+Processing by PoliciesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"hMkbpXjLikl5iWuUhDzyKpy4x2BOtCMd3Oj6mtZtVKjamTRFTNpigxy9ASnzuZwZdZwOuDJtUJG4FLgnPmAIoQ==", "policy"=>{"title"=>"also", "description"=>"keep", "policymakers"=>"on ", "location"=>"going"}, "commit"=>"Save Policy"}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (4.0ms)[0m  [1m[32mINSERT INTO "policies" ("title", "description", "policymakers", "location", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "also"], ["description", "keep"], ["policymakers", "on "], ["location", "going"], ["created_at", "2018-03-04 15:21:41.824971"], ["updated_at", "2018-03-04 15:21:41.824971"]]
+  [1m[35m (193.9ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/policies
+Completed 302 Found in 221ms (ActiveRecord: 197.9ms)
+
+
+Started GET "/policies" for 127.0.0.1 at 2018-03-04 10:21:42 -0500
+Processing by PoliciesController#index as HTML
+  Rendering policies/index.html.erb within layouts/application
+  [1m[36mPolicy Load (0.4ms)[0m  [1m[34mSELECT DISTINCT(location) FROM "policies"[0m
+  [1m[36mPolicy Load (1.0ms)[0m  [1m[34mSELECT "policies".* FROM "policies"[0m
+  Rendered policies/index.html.erb within layouts/application (18.0ms)
+Completed 200 OK in 456ms (Views: 386.7ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/policies" for 127.0.0.1 at 2018-03-04 11:02:33 -0500
+Processing by PoliciesController#index as HTML
+  Rendering policies/index.html.erb within layouts/application
+  [1m[36mPolicy Load (6.0ms)[0m  [1m[34mSELECT DISTINCT(location) FROM "policies"[0m
+  [1m[36mPolicy Load (1.0ms)[0m  [1m[34mSELECT "policies".* FROM "policies"[0m
+  Rendered policies/index.html.erb within layouts/application (47.1ms)
+Completed 200 OK in 299ms (Views: 251.2ms | ActiveRecord: 7.0ms)
+
+
+Started GET "/policies/1" for 127.0.0.1 at 2018-03-04 11:02:42 -0500
+Processing by PoliciesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPolicy Load (1.0ms)[0m  [1m[34mSELECT  "policies".* FROM "policies" WHERE "policies"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering policies/show.html.erb within layouts/application
+  Rendered policies/show.html.erb within layouts/application (57.2ms)
+Completed 200 OK in 411ms (Views: 264.4ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/policies/1" for 127.0.0.1 at 2018-03-04 11:06:17 -0500
+Processing by PoliciesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPolicy Load (3.0ms)[0m  [1m[34mSELECT  "policies".* FROM "policies" WHERE "policies"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering policies/show.html.erb within layouts/application
+  Rendered policies/show.html.erb within layouts/application (5.0ms)
+Completed 500 Internal Server Error in 325ms (ActiveRecord: 3.0ms)
+
+
+  
+SyntaxError (C:/Users/Yeliang/Documents/hACK/StarterHacksProject-master/StarterHacksProject-master/app/views/policies/show.html.erb:24: syntax error, unexpected ':'
+ffer.append=( f.radio_button :
+                              ^
+C:/Users/Yeliang/Documents/hACK/StarterHacksProject-master/StarterHacksProject-master/app/views/policies/show.html.erb:27: unknown type of %string
+<%end);
+    ^):
+  
+app/views/policies/show.html.erb:24: syntax error, unexpected ':'
+app/views/policies/show.html.erb:27: unknown type of %string
+Started GET "/policies/1" for 127.0.0.1 at 2018-03-04 11:06:37 -0500
+Processing by PoliciesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPolicy Load (0.0ms)[0m  [1m[34mSELECT  "policies".* FROM "policies" WHERE "policies"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering policies/show.html.erb within layouts/application
+  Rendered policies/show.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 187ms (Views: 159.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/policies/1" for 127.0.0.1 at 2018-03-04 11:07:36 -0500
+Processing by PoliciesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPolicy Load (0.9ms)[0m  [1m[34mSELECT  "policies".* FROM "policies" WHERE "policies"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering policies/show.html.erb within layouts/application
+  Rendered policies/show.html.erb within layouts/application (893.2ms)
+Completed 500 Internal Server Error in 1173ms (ActiveRecord: 0.9ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `form_submit' for #<#<Class:0x0000000007639af0>:0x000000000d46fa48>
+Did you mean?  form_with):
+    23:   <%= label :voteMethod_No, 'NO' %>
+    24: 
+    25:   <p>
+    26:   	<%= form_submit%>
+    27:   </p>
+    28: <%end%>
+  
+app/views/policies/show.html.erb:26:in `block in _app_views_policies_show_html_erb___1649116144_111389160'
+app/views/policies/show.html.erb:17:in `_app_views_policies_show_html_erb___1649116144_111389160'
+Started GET "/policies/1" for 127.0.0.1 at 2018-03-04 11:07:57 -0500
+Processing by PoliciesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPolicy Load (1.0ms)[0m  [1m[34mSELECT  "policies".* FROM "policies" WHERE "policies"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering policies/show.html.erb within layouts/application
+  Rendered policies/show.html.erb within layouts/application (322.9ms)
+Completed 500 Internal Server Error in 444ms (ActiveRecord: 1.0ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `form' for #<#<Class:0x0000000007639af0>:0x000000000fad7938>
+Did you mean?  fork):
+    23:   <%= label :voteMethod_No, 'NO' %>
+    24: 
+    25:   <p>
+    26:   	<%= form.submit%>
+    27:   </p>
+    28: <%end%>
+  
+app/views/policies/show.html.erb:26:in `block in _app_views_policies_show_html_erb___1649116144_131523000'
+app/views/policies/show.html.erb:17:in `_app_views_policies_show_html_erb___1649116144_131523000'
+Started GET "/policies/1" for 127.0.0.1 at 2018-03-04 11:08:27 -0500
+Processing by PoliciesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPolicy Load (1.6ms)[0m  [1m[34mSELECT  "policies".* FROM "policies" WHERE "policies"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering policies/show.html.erb within layouts/application
+  Rendered policies/show.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 369ms (Views: 138.6ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/policies/1" for 127.0.0.1 at 2018-03-04 11:10:03 -0500
+Processing by PoliciesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPolicy Load (0.0ms)[0m  [1m[34mSELECT  "policies".* FROM "policies" WHERE "policies"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering policies/show.html.erb within layouts/application
+  Rendered policies/show.html.erb within layouts/application (6.0ms)
+Completed 200 OK in 531ms (Views: 449.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/policies" for 127.0.0.1 at 2018-03-04 11:10:09 -0500
+Processing by PoliciesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"C5NNyIgzLLNUbsabc1Prcpl6oVJJxFwuQrCPAP1K20hVw2IovCLEeTFarCYE1oVBcF5oijUdL6ImTM29FUeHQQ==", "policy"=>{"voteMethod"=>"yes"}, "commit"=>"Submit Vote"}
+Unpermitted parameter: :voteMethod
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  [1m[32mINSERT INTO "policies" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2018-03-04 16:10:09.982716"], ["updated_at", "2018-03-04 16:10:09.982716"]]
+  [1m[35m (108.3ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/policies/1
+Completed 302 Found in 162ms (ActiveRecord: 109.3ms)
+
+
+Started GET "/policies/1" for 127.0.0.1 at 2018-03-04 11:10:10 -0500
+Processing by PoliciesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPolicy Load (0.0ms)[0m  [1m[34mSELECT  "policies".* FROM "policies" WHERE "policies"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering policies/show.html.erb within layouts/application
+  Rendered policies/show.html.erb within layouts/application (3.6ms)
+Completed 200 OK in 411ms (Views: 321.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/policies" for 127.0.0.1 at 2018-03-04 11:10:14 -0500
+Processing by PoliciesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"4caBYblbik0AKYByAup4ZkmruKJUhGw6YTzNkxrktMa/lq6BjUpih2Ud6s91bxZVoI9xeihdH7YFwI8u8unozw==", "policy"=>{"voteMethod"=>"no"}, "commit"=>"Submit Vote"}
+Unpermitted parameter: :voteMethod
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  [1m[32mINSERT INTO "policies" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2018-03-04 16:10:14.231293"], ["updated_at", "2018-03-04 16:10:14.231293"]]
+  [1m[35m (75.1ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/policies/1
+Completed 302 Found in 88ms (ActiveRecord: 76.1ms)
+
+
+Started GET "/policies/1" for 127.0.0.1 at 2018-03-04 11:10:14 -0500
+Processing by PoliciesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPolicy Load (1.0ms)[0m  [1m[34mSELECT  "policies".* FROM "policies" WHERE "policies"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering policies/show.html.erb within layouts/application
+  Rendered policies/show.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 439ms (Views: 313.4ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/policies" for 127.0.0.1 at 2018-03-04 11:21:19 -0500
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PoliciesController#index as HTML
+  Rendering policies/index.html.erb within layouts/application
+  [1m[36mPolicy Load (0.0ms)[0m  [1m[34mSELECT DISTINCT(location) FROM "policies"[0m
+  [1m[36mPolicy Load (0.0ms)[0m  [1m[34mSELECT "policies".* FROM "policies"[0m
+  Rendered policies/index.html.erb within layouts/application (47.2ms)
+Completed 200 OK in 535ms (Views: 498.6ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/policies" for 127.0.0.1 at 2018-03-04 11:29:30 -0500
+Processing by PoliciesController#index as HTML
+  Rendering policies/index.html.erb within layouts/application
+  [1m[36mPolicy Load (1.0ms)[0m  [1m[34mSELECT DISTINCT(location) FROM "policies"[0m
+  [1m[36mPolicy Load (1.0ms)[0m  [1m[34mSELECT "policies".* FROM "policies"[0m
+  Rendered policies/index.html.erb within layouts/application (15.0ms)
+Completed 200 OK in 320ms (Views: 234.1ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/policies/1" for 127.0.0.1 at 2018-03-04 11:29:35 -0500
+Processing by PoliciesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPolicy Load (1.0ms)[0m  [1m[34mSELECT  "policies".* FROM "policies" WHERE "policies"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering policies/show.html.erb within layouts/application
+  Rendered policies/show.html.erb within layouts/application (380.6ms)
+Completed 500 Internal Server Error in 581ms (ActiveRecord: 1.0ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `vote_path' for #<#<Class:0x00000000066fca38>:0x000000000f148520>
+Did you mean?  video_path
+               root_path
+               font_path):
+    14: 	<%= @policy.description %>
+    15: </p>
+    16: 
+    17: <%= form_with scope: :vote, url: vote_path,local: true do |f| %>
+    18:   <%= f.radio_button :voteMethod, 'abstain' %>
+    19:   <%= label :voteMethod_Abstain, 'ABSTAIN' %>
+    20:   <%= f.radio_button :voteMethod, 'yes'%> 
+  
+app/views/policies/show.html.erb:17:in `_app_views_policies_show_html_erb__1670867004_126502780'
+Started GET "/policies/1" for 127.0.0.1 at 2018-03-04 11:56:50 -0500
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PoliciesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPolicy Load (0.5ms)[0m  [1m[34mSELECT  "policies".* FROM "policies" WHERE "policies"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering policies/show.html.erb within layouts/application
+  Rendered policies/show.html.erb within layouts/application (23.0ms)
+Completed 200 OK in 529ms (Views: 424.1ms | ActiveRecord: 1.5ms)
+
+
+Started POST "/policies" for 127.0.0.1 at 2018-03-04 11:56:56 -0500
+Processing by PoliciesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"EMgxp8XKU61hxOpNSJgFIpY2GTGGVSwEfFdXPEwj2BhOmB5H8du7ZwTwgPA/HWsRfxLQ6fqMX4gYqxWBpC6EEQ==", "policies"=>{"voteMethod"=>"yes"}, "commit"=>"Submit Vote"}
+Completed 400 Bad Request in 2ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: policy):
+  
+app/controllers/policies_controller.rb:27:in `article_params'
+app/controllers/policies_controller.rb:13:in `create'
+Started GET "/policies" for 127.0.0.1 at 2018-03-04 12:11:14 -0500
+Processing by PoliciesController#index as HTML
+  Rendering policies/index.html.erb within layouts/application
+  [1m[36mPolicy Load (40.1ms)[0m  [1m[34mSELECT DISTINCT(location) FROM "policies"[0m
+  [1m[36mPolicy Load (1.0ms)[0m  [1m[34mSELECT "policies".* FROM "policies"[0m
+  Rendered policies/index.html.erb within layouts/application (531.5ms)
+Completed 200 OK in 1192ms (Views: 919.7ms | ActiveRecord: 114.3ms)
+
+
