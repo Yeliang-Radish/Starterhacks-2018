@@ -1,0 +1,196 @@
+// Place all the styles related to the Policies controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+$gray: #F0F4F8;
+
+@import "neat/neat";
+
+
+@font-face {
+  font-family: 'Akzidenz Medium';
+  src: url("/assets/fonts/AkzidenzGrotesk-Medium.otf");
+}
+// @font-face {
+//   font-family: 'Akzidenz Bold';
+//   src: url("/assets/fonts/AkzidenzGrotesk-Bold.otf");
+// }
+
+
+// @font-face {
+//   font-family: 'Akzidenz Light';
+//   src: url("/assets/fonts/AkzidenzGrotesk-Light.otf");
+// }
+
+@font-face {
+  font-family: 'Akzidenz Regular';
+  src: url("/assets/fonts/AkzidenzGrotesk-Regular.otf");
+}
+
+
+$muli: 'Muli', sans-serif;
+$title: 'Akzidenz Bold', monospace;
+
+/* Rectangle 7: */
+
+
+h1 {
+  font-size:10em;
+}
+
+.nav {
+  height:10em;
+  width:100%;
+  background: #F0F4F8;
+  font-family: Muli-Light;
+  font-size: 14px;
+  color: #37393A;
+  text-align: left;
+
+  display: inline-flex;
+  .nav-content {
+    @include grid-column(12);
+  .back {
+    @include grid-column(1);
+    float: left;
+    margin-top: 3em;
+  }
+
+  .menu {
+    margin-top: 4em;
+  }
+  .nav-title{
+    text-align: center;
+    @include grid-column(4);
+    @include grid-shift(3);
+
+    font-size: 2rem;
+    line-height:2.4em;;
+  }
+}
+}
+
+a {
+  text-decoration-line: none;
+}
+
+.policy-card {
+  background: black url('/assets/Bitmap.png')no-repeat center center;
+
+  background-size: 100% 100%;
+  margin-bottom: 4em;
+  width: 89%;
+  height: 22em;
+  border-radius: 2em;
+  margin-left: 56px;
+  -webkit-box-shadow: 0px 4px 15px 0px rgba(0,0,0,0.75);
+-moz-box-shadow: 0px 4px 15px 0px rgba(0,0,0,0.75);
+box-shadow: 0px 4px 15px 0px rgba(0,0,0,0.75);
+  .date {
+    float: right;
+    padding-top: 2em;
+    padding-right: 2.5em;
+    font-family: Muli-Regular;
+    font-size: 1.3em;
+    color: #F9F4F5;
+    text-align: left;
+  }
+
+.title {
+  padding-top: 7em;
+  font-size: 2em;
+  text-decoration: none;
+  padding-left: 1em;
+  padding-right: 2em;
+
+  .tag {
+    font-family: Muli-Black;
+    font-size: 0.8em;
+    color: #5CA0C6;
+    text-align: left;
+    margin-bottom: 0px;
+  }
+
+    p {
+      font-family: Muli-Bold;
+      color: #F9F4F5;
+      margin-top: 0px;
+      margin-bottom: 0px;
+    }
+}
+
+    }
+
+
+
+.policy-head {
+  padding-top: 7em;
+  padding-bottom: 3em;
+  background: #F0F4F8;
+  .policymaker {
+    margin-left: 56px;
+    font-family: Muli-SemiBold;
+    font-size: 3em;
+    color: #5CA0C6;
+    text-align: left;
+    line-height: 16px;
+  }
+  .title {
+    margin-left: 56px;
+    margin-right: 56px;
+    margin-top: 0px;
+    font-family: Muli-Bold;
+    font-size: 7em;
+    color: #37393A;
+    text-align: left;
+  }
+
+}
+
+.content {
+  margin-left: 56px;
+  margin-top: 6em;
+  margin-bottom: 6em;
+  margin-right: 56px;
+  .description {
+    font-family: Muli-Bold;
+    font-size: 2em;
+    color: #AAAAAA;
+    text-align: left;
+    line-height: 16px;
+  }
+  p {
+    font-family: Muli-Regular;
+    font-size: 2em;
+    color: #37393A;
+    text-align: left;
+    line-height: 1.5em;
+  }
+}
+
+.voting {
+  width: 100%;
+  background: #FDE74C;
+  height: 36em;
+  padding-top: 4em;
+  text-align: center;
+
+  .reminder {
+    font-size: 3em;
+    color: #37393A;
+  }
+  .btn {
+    border: 1px solid #FDE74C;
+    background: white;
+    font-size: 2em;
+    font-weight: 700;
+    padding: 1em 4em 1em 4em;
+    width: initial;
+    /* border-radius: 50%; */
+    background: #F9F4F5;
+    display: -webkit-inline-box;
+    border-radius: 100px;
+    text-align: center;
+    margin-top: 1em;
+  }
+}
